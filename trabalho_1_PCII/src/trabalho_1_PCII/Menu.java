@@ -19,7 +19,7 @@ public class Menu
 	Scanner in = new Scanner (System.in);
 	Scanner stringScan = new Scanner (System.in);
 	Produto prod[]= new Produto[100];//Instancia de produto
-	static int maiorValoVenda = 0, IDmaiorValor=0;
+	static int maiorValoVenda = 0, IDmaiorValor=0,maiorQuantidade =0;
 	public Menu() 
 	{
 		// TODO Auto-generated constructor stub
@@ -98,6 +98,29 @@ public class Menu
 					break;
 				case 3:
 					System.out.println("Opcao 3 selecionada ");
+					quantidadeDeProdutos = 0;
+					for(int i=0;i<prod.length;i++) 
+					{
+						if(prod[i]!=null) {
+							quantidadeDeProdutos++;
+						}
+					}
+					System.out.printf("\nQuantidade Produtos: %d",quantidadeDeProdutos);
+
+					System.out.println("\nO produto com maior quantidade disponivel e o : ");
+					
+					for(int i = 0; i< quantidadeDeProdutos; i++)
+					{
+						int quantidaDispAtual = prod[i].getQuantidade();
+						if(quantidaDispAtual>= maiorQuantidade)
+						{
+							maiorQuantidade = quantidaDispAtual;
+							IDmaiorValor = i;
+						}
+						
+					}
+					nomeProduto = prod[IDmaiorValor].getNome();
+					System.out.printf("\n %s ",nomeProduto);
 					break;
 				case 4:
 					System.out.println("Opcao 4 selecionada ");
