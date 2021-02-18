@@ -1,11 +1,23 @@
 package trabalho_1_PCII;
 import java.util.Scanner; //importa classe que possui recursos
-
+/*
+		1.Adicionar um produto
+		2.Encontrar o produto com o maior preço de venda
+		3.Encontrar o produto com a maior quantidade disponível no estoque
+		4.Encontrar um dado produto através do seu código de identificação
+		5.Alterar o preço de venda de um dado produto
+		6.Listar todos os produtos pelo nome em ordem alfabética
+		7.Sair
+	*/
 public class Menu 
 {
 	private int opcao =0;
 	private	String voltaMenu;
+	
+	static int ID = 0;
 	Scanner in = new Scanner (System.in);
+	Produto prod[]= new Produto[100];//Instancia de produto
+	
 	public Menu() 
 	{
 		// TODO Auto-generated constructor stub
@@ -13,13 +25,34 @@ public class Menu
 	
 	public void loopMenu()
 	{
+		//int contadorProdutos=0;
+		//int codigoID;
+		
+		String nomeProduto;
+		int quantidade;
+		int precoVenda;
+		String info;
+
 		while(opcao!=7)
 		{
 			opcao = OpcoesMenu();
 			switch(opcao)
 			{
 				case 1:
+					
 					System.out.println("Opcao 1 selecionada ");
+					System.out.println("Adicione um novo produto: ");
+					System.out.println("Digite o nome do novo produto: ");
+					nomeProduto = in.nextLine();
+					System.out.println("Digite a quantidade do novo produto: ");
+					quantidade = in.nextInt();
+					System.out.println("Digite o precoVenda do novo produto: ");
+					precoVenda = in.nextInt();
+					System.out.println("Digite a descricao do novo produto: ");
+					info = in.nextLine();
+					prod[ID]=new Produto(ID,nomeProduto,quantidade,precoVenda,info);
+					ID ++;
+					//loja.adicionaProduto();
 					break;
 				case 2:
 					System.out.println("Opcao 2 selecionada ");
@@ -37,7 +70,7 @@ public class Menu
 					System.out.println("Opcao 6 selecionada ");
 					break;
 				case 7:
-					System.out.println("Voc� saiu do menu  ");
+					System.out.println("Voce saiu do menu  ");
 					break;
 				default:
 					System.out.println("Digite uma opcao valida ");

@@ -1,7 +1,7 @@
 package trabalho_1_PCII;
 
 import java.util.Arrays;
-
+/*
 public class Loja 
 {
 
@@ -141,3 +141,4 @@ public class Loja
 		quantidadeDeProdutos=0;
 	}
 }
+*/
