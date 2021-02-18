@@ -27,7 +27,7 @@ public class Produto
 	{
 		return codigoID;
 	}
-	public String getnomeProduto()
+	public String getNome()
 	{
 		return nomeProduto;
 	}
