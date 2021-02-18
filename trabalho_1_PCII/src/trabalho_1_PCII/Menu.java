@@ -147,11 +147,40 @@ public class Menu
 					}
 					else
 					{
-						System.out.println("Ainda não há produtos");
+						System.out.println("Ainda nï¿½o hï¿½ produtos");
 					}
 					break;
 				case 5:
-					System.out.println("Opcao 5 selecionada ");
+					quantidadeDeProdutos = 0;
+					for(int i=0;i<prod.length;i++) 
+					{
+						if(prod[i]!=null) {
+							quantidadeDeProdutos++;
+						}
+					}
+					if(quantidadeDeProdutos != 0)
+					{
+						System.out.println("\nEntre com o Id do produto: ");
+						indice = in.nextInt();
+						System.out.println("\nDigite o novo valor do produto: ");
+						precoVenda =in.nextInt();
+						prod[indice].setPrecoVenda(precoVenda);
+						System.out.println("\nAtualizacao produto: ");
+						indice = prod[indice].getID() ;
+						nomeProduto =prod[indice].getNome();
+						quantidade = prod[indice].getQuantidade();
+						precoVenda = prod[indice].getPrecoVenda();
+						info =		 prod[indice].getInfo();
+						System.out.printf("\n Indice %d",indice);
+						System.out.printf("\n Nome %s",nomeProduto);
+						System.out.printf("\n quantidade %d",quantidade);
+						System.out.printf("\n precoVenda %d",precoVenda);
+						System.out.printf("\n info %s",info);
+					}
+					else
+					{
+						System.out.println("\nAinda nao ha produtos");
+					}
 					break;
 				case 6:
 					System.out.println("Opcao 6 selecionada ");
