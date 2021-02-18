@@ -160,6 +160,7 @@ public class Menu
 					//4.Encontrar um dado produto através do seu código de identificação
 					//Identifica se já existem produtos cadastrados
 					//Usa os metodos get para acessar os atributos do produto do ID pedido
+				
 					quantidadeDeProdutos = 0;
 					for(int i=0;i<prod.length;i++) 
 					{
@@ -170,21 +171,28 @@ public class Menu
 					if(quantidadeDeProdutos != 0)
 					{
 						System.out.println("Opcao 4 selecionada ");
-						System.out.println("De o codigo do produto para mostra-lo:");
-						indice = prod[ID].getID() ;
-						nomeProduto =prod[ID].getNome();
-						quantidade = prod[ID].getQuantidade();
-						precoVenda = prod[ID].getPrecoVenda();
-						info =		 prod[ID].getInfo();
+						
+						indice = -1;
+						do 
+						{	
+							System.out.println("De o codigo do produto para mostra-lo:");
+							indice = in.nextInt();
+							if(indice<0 || indice > quantidadeDeProdutos)
+								System.out.println("\nEsse valor nao existe no estoque: ");
+						}while(indice<0 || indice > quantidadeDeProdutos);
+						nomeProduto =prod[indice].getNome();
+						quantidade = prod[indice].getQuantidade();
+						precoVenda = prod[indice].getPrecoVenda();
+						info =		 prod[indice].getInfo();
 						System.out.printf("\n Indice %d",indice);
 						System.out.printf("\n Nome %s",nomeProduto);
 						System.out.printf("\n quantidade %d",quantidade);
-						System.out.printf("\n precoVenda %d",precoVenda);
+						System.out.printf("\n precoVenda %s",precoVenda);
 						System.out.printf("\n info %s",info);
 					}
 					else
 					{
-						System.out.println("Ainda n�o h� produtos");
+						System.out.println("Ainda nao ha produtos");
 					}
 					break;
 				case 5:
@@ -202,7 +210,15 @@ public class Menu
 					if(quantidadeDeProdutos != 0)
 					{
 						System.out.println("\nEntre com o Id do produto: ");
-						indice = in.nextInt();
+						indice = -1;
+						do 
+						{	
+							System.out.println("De o codigo do produto para mostra-lo:");
+							indice = in.nextInt();
+							if(indice<0 || indice > quantidadeDeProdutos)
+								System.out.println("\nEsse valor nao existe no estoque: ");
+						}while(indice<0 || indice > quantidadeDeProdutos);
+						
 						nomeProduto =prod[indice].getNome();
 						System.out.printf("\n Nome %s",nomeProduto);
 						System.out.println("\nDigite o novo valor do produto: ");
