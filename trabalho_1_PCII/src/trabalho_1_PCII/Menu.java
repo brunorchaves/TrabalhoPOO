@@ -1,7 +1,15 @@
 package trabalho_1_PCII;
 import java.util.Scanner; //importa classe que possui recursos
 import java.util.Arrays;
+
+//********************Observacao*********************
 /*
+Aparentemente o sistema esta entendendo floats na "maneira" brasileira
+,ou seja , o numero 1.500 aqui é interpretado como "mil e quinhentos"
+ja o numero 1,5000 é interpretado como "um(inteiro) e 5(decimal)"
+*/
+/*
+		Menu:
 		1.Adicionar um produto
 		2.Encontrar o produto com o maior preço de venda
 		3.Encontrar o produto com a maior quantidade disponível no estoque
@@ -20,20 +28,38 @@ public class Menu
 	Scanner in = new Scanner (System.in);
 	Scanner stringScan = new Scanner (System.in);
 	Produto prod[]= new Produto[100];//Instancia de produto
-	static int maiorValoVenda = 0, IDmaiorValor=0,maiorQuantidade =0;
+	static float maiorValoVenda = 0;
+	static int IDmaiorValor=0,maiorQuantidade =0;
+	/*********************************************************************
+	* @fn      Menu
+	*
+	* @brief   Construtor menu
+	*
+	* @param   none
+	*
+	* @return  none
+	*/
 	public Menu() 
 	{
 		// TODO Auto-generated constructor stub
 	}
 	
+	/*********************************************************************
+	* @fn      loopMenu
+	*
+	* @brief   loop que roda as funcoes do menu
+	*
+	* @param   none
+	*
+	* @return  none
+	*/
 	public void loopMenu()
 	{
-		//int contadorProdutos=0;
-		//int codigoID;
+		
 		
 		String nomeProduto;
 		int quantidade;
-		int precoVenda;
+		float precoVenda;
 		String info;
 		int indice =0;
 		
@@ -43,7 +69,7 @@ public class Menu
 			switch(opcao)
 			{
 				case 1:
-					
+					//1.Adicionar um produto -> Pede as informações necessárias p/ o construtor
 					System.out.println("Opcao 1 selecionada ");
 					System.out.println("Adicione um novo produto: ");
 					System.out.println("Digite o nome do novo produto:\n ");
@@ -51,13 +77,13 @@ public class Menu
 					System.out.println("Digite a quantidade do novo produto:\n ");
 					quantidade = in.nextInt();
 					System.out.println("Digite o precoVenda do novo produto:\n ");
-					precoVenda = in.nextInt();
+					precoVenda = in.nextFloat();
 					System.out.println("\nDigite a descricao do novo produto:\n ");
 					info = stringScan.nextLine();
 					prod[ID]=new Produto(ID,nomeProduto,quantidade,precoVenda,info);
 					
 					
-					//Testar
+					//Imprime na tela os atritutos do produto criado
 					indice = prod[ID].getID() ;
 					nomeProduto =prod[ID].getNome();
 					quantidade = prod[ID].getQuantidade();
@@ -66,12 +92,15 @@ public class Menu
 					System.out.printf("\n Indice %d",indice);
 					System.out.printf("\n Nome %s",nomeProduto);
 					System.out.printf("\n quantidade %d",quantidade);
-					System.out.printf("\n precoVenda %d",precoVenda);
+					System.out.printf("\n precoVenda %f",precoVenda);
 					System.out.printf("\n info %s",info);
-					ID ++;
-					//loja.adicionaProduto();
+					ID ++;//Incrementa o código ID para o próximo produto automaticamente
+				
 					break;
 				case 2:
+					//2.Encontrar o produto com o maior preço de venda
+					//Identifica quantidadde de produtos cadastrados
+					//Faz um loop para analisar qual tem o maior valor de venda
 					System.out.println("\nOpcao 2 selecionada ");
 					quantidadeDeProdutos = 0;
 					for(int i=0;i<prod.length;i++) 
@@ -86,7 +115,7 @@ public class Menu
 					
 					for(int i = 0; i< quantidadeDeProdutos; i++)
 					{
-						int precoVendaAtual = prod[i].getPrecoVenda();
+						float precoVendaAtual = prod[i].getPrecoVenda();
 						if(precoVendaAtual>= maiorValoVenda)
 						{
 							maiorValoVenda = precoVendaAtual;
@@ -98,6 +127,9 @@ public class Menu
 					System.out.printf("\n %s ",nomeProduto);
 					break;
 				case 3:
+					//3.Encontrar o produto com a maior quantidade disponível no estoque
+					//Identifica quantidadde de produtos cadastrados
+					//Faz um loop para analisar qual tem a maior quantidade disponível no estoque
 					System.out.println("Opcao 3 selecionada ");
 					quantidadeDeProdutos = 0;
 					for(int i=0;i<prod.length;i++) 
@@ -125,6 +157,9 @@ public class Menu
 					System.out.printf("\n %s (Qt. %d)",nomeProduto,maiorQuantidade);
 					break;
 				case 4:
+					//4.Encontrar um dado produto através do seu código de identificação
+					//Identifica se já existem produtos cadastrados
+					//Usa os metodos get para acessar os atributos do produto do ID pedido
 					quantidadeDeProdutos = 0;
 					for(int i=0;i<prod.length;i++) 
 					{
@@ -153,6 +188,10 @@ public class Menu
 					}
 					break;
 				case 5:
+					// 5.Alterar o preço de venda de um dado produto
+					//Identifica se já existem produtos cadastrados
+					//Usa o metodo set para alterar o preco de venda do produto
+					//com o ID especificado
 					quantidadeDeProdutos = 0;
 					for(int i=0;i<prod.length;i++) 
 					{
@@ -164,19 +203,20 @@ public class Menu
 					{
 						System.out.println("\nEntre com o Id do produto: ");
 						indice = in.nextInt();
+						nomeProduto =prod[indice].getNome();
+						System.out.printf("\n Nome %s",nomeProduto);
 						System.out.println("\nDigite o novo valor do produto: ");
-						precoVenda =in.nextInt();
+						precoVenda =in.nextFloat();
 						prod[indice].setPrecoVenda(precoVenda);
 						System.out.println("\nAtualizacao produto: ");
 						indice = prod[indice].getID() ;
-						nomeProduto =prod[indice].getNome();
 						quantidade = prod[indice].getQuantidade();
 						precoVenda = prod[indice].getPrecoVenda();
 						info =		 prod[indice].getInfo();
 						System.out.printf("\n Indice %d",indice);
 						System.out.printf("\n Nome %s",nomeProduto);
 						System.out.printf("\n quantidade %d",quantidade);
-						System.out.printf("\n precoVenda %d",precoVenda);
+						System.out.printf("\n precoVenda %f",precoVenda);
 						System.out.printf("\n info %s",info);
 					}
 					else
@@ -185,6 +225,8 @@ public class Menu
 					}
 					break;
 				case 6:
+					// 6.Listar todos os produtos pelo nome em ordem alfabética
+					//Usa o medo sort para ordenar os produtos em ordem alfabetica
 					System.out.println("Opcao 6 selecionada ");
 					quantidadeDeProdutos = 0;
 					for(int i=0;i<prod.length;i++) 
@@ -234,6 +276,16 @@ public class Menu
 			}
 		}
 	}
+	/*********************************************************************
+	* @fn      OpcoesMenu
+	*
+	* @brief   loop que roda as funcoes do menu
+	*
+	* @param   Metodo que gera o texto com as opcoes do menu, chamada na 
+	*		   funcao do menu
+	*
+	* @return  opcao
+	*/
 	public static int OpcoesMenu()
 	{
 		int opcao = 0;

@@ -5,10 +5,10 @@ public class Produto
 	private int codigoID;
 	private String nomeProduto;
 	private int quantidade;
-	private int precoVenda;
+	private float precoVenda;
 	private String info;
 	//Construtor
-	public Produto(int codigoID ,String nome, int quantidade,int precoVenda,String info)
+	public Produto(int codigoID ,String nome, int quantidade,float precoVenda,String info)
 	{
 		this.codigoID=codigoID;
 		this.nomeProduto  = nome;
@@ -29,7 +29,7 @@ public class Produto
 	{
 		return quantidade;
 	}
-	public int getPrecoVenda() 
+	public float getPrecoVenda() 
 	{
 		return precoVenda;
 	}
@@ -50,7 +50,7 @@ public class Produto
 	{
 		this.quantidade = quantidade;
 	}
-	public void setPrecoVenda(int precoVenda) 
+	public void setPrecoVenda(float precoVenda) 
 	{
 		this.precoVenda = precoVenda;
 	}
