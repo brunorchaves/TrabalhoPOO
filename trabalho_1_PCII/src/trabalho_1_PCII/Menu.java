@@ -121,7 +121,8 @@ public class Menu
 						
 					}
 					nomeProduto = prod[IDmaiorValor].getNome();
-					System.out.printf("\n %s ",nomeProduto);
+					
+					System.out.printf("\n %s (Qt. %d)",nomeProduto,maiorQuantidade);
 					break;
 				case 4:
 					quantidadeDeProdutos = 0;
@@ -201,9 +202,17 @@ public class Menu
 							arr[i]=nomeProduto;
 						}
 						// Sorts arr[] in ascending order
-						Arrays.sort(arr);
+						Arrays.sort(arr);/*
 						System.out.printf("Array em ordem[] : \n%s\n\n",
-										Arrays.toString(arr));
+										Arrays.toString(arr));*/
+						for(int i = 0; i< quantidadeDeProdutos; i++)
+						{
+							
+							System.out.printf("\n %d )) ",i+1);
+							System.out.println(arr[i]);
+
+						}
+						
 					}
 					else
 					{
