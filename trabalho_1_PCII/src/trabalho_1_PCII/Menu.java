@@ -15,10 +15,11 @@ public class Menu
 	private	String voltaMenu;
 	
 	static int ID = 0;
+	int quantidadeDeProdutos=0;
 	Scanner in = new Scanner (System.in);
 	Scanner stringScan = new Scanner (System.in);
 	Produto prod[]= new Produto[100];//Instancia de produto
-	
+	static int maiorValoVenda = 0, IDmaiorValor=0;
 	public Menu() 
 	{
 		// TODO Auto-generated constructor stub
@@ -34,6 +35,7 @@ public class Menu
 		int precoVenda;
 		String info;
 		int indice =0;
+		
 		while(opcao!=7)
 		{
 			opcao = OpcoesMenu();
@@ -49,7 +51,7 @@ public class Menu
 					quantidade = in.nextInt();
 					System.out.println("Digite o precoVenda do novo produto:\n ");
 					precoVenda = in.nextInt();
-					System.out.println("Digite a descricao do novo produto:\n ");
+					System.out.println("\nDigite a descricao do novo produto:\n ");
 					info = stringScan.nextLine();
 					prod[ID]=new Produto(ID,nomeProduto,quantidade,precoVenda,info);
 					
@@ -69,7 +71,30 @@ public class Menu
 					//loja.adicionaProduto();
 					break;
 				case 2:
-					System.out.println("Opcao 2 selecionada ");
+					System.out.println("\nOpcao 2 selecionada ");
+					quantidadeDeProdutos = 0;
+					for(int i=0;i<prod.length;i++) 
+					{
+						if(prod[i]!=null) {
+							quantidadeDeProdutos++;
+						}
+					}
+					System.out.printf("\nQuantidade Produtos: %d",quantidadeDeProdutos);
+
+					System.out.println("\nO produto de maior preco de venda e o : ");
+					
+					for(int i = 0; i< quantidadeDeProdutos; i++)
+					{
+						int precoVendaAtual = prod[i].getPrecoVenda();
+						if(precoVendaAtual>= maiorValoVenda)
+						{
+							maiorValoVenda = precoVendaAtual;
+							IDmaiorValor = i;
+						}
+						
+					}
+					nomeProduto = prod[IDmaiorValor].getNome();
+					System.out.printf("\n %s ",nomeProduto);
 					break;
 				case 3:
 					System.out.println("Opcao 3 selecionada ");
