@@ -16,6 +16,7 @@ public class Menu
 	
 	static int ID = 0;
 	Scanner in = new Scanner (System.in);
+	Scanner stringScan = new Scanner (System.in);
 	Produto prod[]= new Produto[100];//Instancia de produto
 	
 	public Menu() 
@@ -32,7 +33,7 @@ public class Menu
 		int quantidade;
 		int precoVenda;
 		String info;
-
+		int indice =0;
 		while(opcao!=7)
 		{
 			opcao = OpcoesMenu();
@@ -42,15 +43,28 @@ public class Menu
 					
 					System.out.println("Opcao 1 selecionada ");
 					System.out.println("Adicione um novo produto: ");
-					System.out.println("Digite o nome do novo produto: ");
-					nomeProduto = in.nextLine();
-					System.out.println("Digite a quantidade do novo produto: ");
+					System.out.println("Digite o nome do novo produto:\n ");
+					nomeProduto = stringScan.nextLine();
+					System.out.println("Digite a quantidade do novo produto:\n ");
 					quantidade = in.nextInt();
-					System.out.println("Digite o precoVenda do novo produto: ");
+					System.out.println("Digite o precoVenda do novo produto:\n ");
 					precoVenda = in.nextInt();
-					System.out.println("Digite a descricao do novo produto: ");
-					info = in.nextLine();
+					System.out.println("Digite a descricao do novo produto:\n ");
+					info = stringScan.nextLine();
 					prod[ID]=new Produto(ID,nomeProduto,quantidade,precoVenda,info);
+					
+					
+					//Testar
+					indice = prod[ID].getID() ;
+					nomeProduto =prod[ID].getNome();
+					quantidade = prod[ID].getQuantidade();
+					precoVenda = prod[ID].getPrecoVenda();
+					info =		 prod[ID].getInfo();
+					System.out.printf("\n Indice %d",indice);
+					System.out.printf("\n Nome %s",nomeProduto);
+					System.out.printf("\n quantidade %d",quantidade);
+					System.out.printf("\n precoVenda %d",precoVenda);
+					System.out.printf("\n info %s",info);
 					ID ++;
 					//loja.adicionaProduto();
 					break;
@@ -78,8 +92,8 @@ public class Menu
 			}
 			if(opcao !=7)
 			{
-				System.out.println("Digite qualquer letra e aperter enter para voltar ao menu ");
-				voltaMenu = in.nextLine();
+				System.out.println("\nDigite qualquer letra e aperter enter para voltar ao menu ");
+				voltaMenu = stringScan.nextLine();
 			}
 		}
 	}
