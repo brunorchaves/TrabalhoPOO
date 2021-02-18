@@ -1,5 +1,5 @@
 package trabalho_1_PCII;
-
+import java.util.Arrays;
 public class Produto 
 {
 	private int codigoID;

@@ -1,5 +1,6 @@
 package trabalho_1_PCII;
 import java.util.Scanner; //importa classe que possui recursos
+import java.util.Arrays;
 /*
 		1.Adicionar um produto
 		2.Encontrar o produto com o maior preço de venda
@@ -184,7 +185,32 @@ public class Menu
 					break;
 				case 6:
 					System.out.println("Opcao 6 selecionada ");
+					quantidadeDeProdutos = 0;
+					for(int i=0;i<prod.length;i++) 
+					{
+						if(prod[i]!=null) {
+							quantidadeDeProdutos++;
+						}
+					}
+					if(quantidadeDeProdutos != 0)
+					{
+						String[] arr= {"z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z","z"};
+						for(int i = 0; i< quantidadeDeProdutos; i++)
+						{
+							nomeProduto = prod[i].getNome();
+							arr[i]=nomeProduto;
+						}
+						// Sorts arr[] in ascending order
+						Arrays.sort(arr);
+						System.out.printf("Array em ordem[] : \n%s\n\n",
+										Arrays.toString(arr));
+					}
+					else
+					{
+						System.out.println("\nAinda nao ha produtos");
+					}
 					break;
+					
 				case 7:
 					System.out.println("Voce saiu do menu  ");
 					break;
