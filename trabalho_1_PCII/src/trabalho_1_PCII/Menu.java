@@ -123,7 +123,32 @@ public class Menu
 					System.out.printf("\n %s ",nomeProduto);
 					break;
 				case 4:
-					System.out.println("Opcao 4 selecionada ");
+					quantidadeDeProdutos = 0;
+					for(int i=0;i<prod.length;i++) 
+					{
+						if(prod[i]!=null) {
+							quantidadeDeProdutos++;
+						}
+					}
+					if(quantidadeDeProdutos != 0)
+					{
+						System.out.println("Opcao 4 selecionada ");
+						System.out.println("De o codigo do produto para mostra-lo:");
+						indice = prod[ID].getID() ;
+						nomeProduto =prod[ID].getNome();
+						quantidade = prod[ID].getQuantidade();
+						precoVenda = prod[ID].getPrecoVenda();
+						info =		 prod[ID].getInfo();
+						System.out.printf("\n Indice %d",indice);
+						System.out.printf("\n Nome %s",nomeProduto);
+						System.out.printf("\n quantidade %d",quantidade);
+						System.out.printf("\n precoVenda %d",precoVenda);
+						System.out.printf("\n info %s",info);
+					}
+					else
+					{
+						System.out.println("Ainda não há produtos");
+					}
 					break;
 				case 5:
 					System.out.println("Opcao 5 selecionada ");
